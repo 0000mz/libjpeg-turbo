@@ -17,5 +17,6 @@ cmake(
     "libjpeg.dylib",
     "libturbojpeg.dylib",
   ],
+  visibility = ["//visibility:public"]
 )
 
