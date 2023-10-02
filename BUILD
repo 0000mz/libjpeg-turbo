@@ -13,10 +13,16 @@ cmake(
     "libjpeg.a",
     "libturbojpeg.a",
   ],
-  out_shared_libs = [
-    "libjpeg.dylib",
-    "libturbojpeg.dylib",
-  ],
+  out_shared_libs = select({
+      "@bazel_tools//src/conditions:linux": [
+        "libjpeg.so",
+        "libturbojpeg.so",
+      ],
+      "@bazel_tools//src/conditions:darwin" : [
+        "libjpeg.dylib",
+        "libturbojpeg.dylib",
+      ]
+  }),
   visibility = ["//visibility:public"]
 )
 
